@@ -26,10 +26,6 @@ resources:
 
 variables:
   - template: '/miscellaneous/build_templates/variables.yml@templates'
-  - name: CredFile
-    value: appsettings.json
-  - name: CredFileLibrary
-    value: product-readiness.BulkUpload_DotNet.json
   - name: analysisProject
     value: SDS_BulkUpload_DotNet
 

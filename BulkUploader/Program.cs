@@ -52,7 +52,7 @@ namespace BulkUploader
             var namespaceId = configuration["NamespaceId"];
             var resource = configuration["Resource"];
             var clientId = configuration["ClientId"];
-            var clientKey = configuration["ClientKey"];
+            var clientSecret = configuration["ClientSecret"];
 
             DataViewPath = configuration["DataView"];
             SdsStreamPath = configuration["Stream"];
@@ -67,7 +67,7 @@ namespace BulkUploader
             (configuration as ConfigurationRoot).Dispose();
             var uriResource = new Uri(resource);
 
-            AuthenticationHandler authenticationHandler = new AuthenticationHandler(uriResource, clientId, clientKey);
+            AuthenticationHandler authenticationHandler = new AuthenticationHandler(uriResource, clientId, clientSecret);
 
             SdsService sdsService = new SdsService(new Uri(resource), authenticationHandler);
             MetadataService = sdsService.GetMetadataService(tenantId, namespaceId);
@@ -75,7 +75,7 @@ namespace BulkUploader
 
             if (!string.IsNullOrEmpty(DataViewPath))
             {
-                AuthenticationHandler authenticationHandlerDataViews = new AuthenticationHandler(uriResource, clientId, clientKey); // currently this has to be a different auth handler or it throws errors
+                AuthenticationHandler authenticationHandlerDataViews = new AuthenticationHandler(uriResource, clientId, clientSecret); // currently this has to be a different auth handler or it throws errors
                 var dv_service_factory = new DataViewServiceFactory(new Uri(resource), authenticationHandlerDataViews);
                 DvService = dv_service_factory.GetDataViewService(tenantId, namespaceId);
             }

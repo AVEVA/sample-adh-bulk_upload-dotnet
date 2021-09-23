@@ -44,12 +44,10 @@ jobs:
     pool:
       name: 00-OSIManaged-Containers
       demands: Agent.OS -equals $(agentOS)
-    steps:
-      - template: '/miscellaneous/build_templates/config.yml@templates'
+    steps:        
+      - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
-          fileOriginal: $(CredFile)
-          fileLibrary: $(CredFileLibrary)
-          filePath: /BulkUploader
+          secrets: 'TenantId, NamespaceId, ClientId, ClientSecret'
 
       - task: DotNetCoreCLI@2
         displayName: 'Nuget restore'

@@ -1,8 +1,11 @@
 # Bulk Uploader SDS DotNet Sample
 
+| :loudspeaker: **Notice**: Samples have been updated to reflect that they work on AVEVA Data Hub. The samples also work on OSIsoft Cloud Services unless otherwise noted. |
+| -----------------------------------------------------------------------------------------------|  
+
 **Version:** 1.0.21
 
-[![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/OCS/osisoft.sample-ocs-bulk_upload-dotnet?repoName=osisoft%2Fsample-ocs-bulk_upload-dotnet&branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2614&repoName=osisoft%2Fsample-ocs-bulk_upload-dotnet&branchName=main)
+[![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/OCS/aveva.sample-adh-bulk_upload-dotnet?branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2614&branchName=main)
 
 Developed against DotNet 5.0.
 
@@ -20,14 +23,14 @@ The [.NET Core CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/) is refe
 
 ## Configuration
 
-This sample needs an OMF client credential created. For details on creating those see [OSIsoft Learning Channel](https://www.youtube.com/watch?v=52lAnkGC1IM).
+This sample needs an OMF client credential created. For details on creating those see [AVEVA Learning Channel](https://www.youtube.com/watch?v=52lAnkGC1IM).
 
 Configure the sample using the file [appsettings.placeholder.json](BulkUploader/appsettings.placeholder.json). Before editing, rename this file to `appsettings.json`. This repository's `.gitignore` rules should prevent the file from ever being checked in to any fork or branch, to ensure credentials are not compromised.
 
-1. `Resource` can usually be left as default, but should be the host specified at the beginning of the URL in the [OCS API Console](https://cloud.osisoft.com/apiconsole)
+1. `Resource` can usually be left as default, but should be the host specified at the beginning of the URL in the [ADH API Console](https://datahub.connect.aveva.com/apiconsole)
 1. `TenantId` should be the ID that comes after `/Tenants/` in the same URL
-1. `NamespaceId` should be the name of the OCS [Namespace](https://cloud.osisoft.com/namespaces) to send the data to
-1. `ClientId` should be the ID of a [Client Credentials Client](https://cloud.osisoft.com/clients).
+1. `NamespaceId` should be the name of the ADH Namespace to send the data to
+1. `ClientId` should be the ID of a [Client Credentials Client](https://datahub.connect.aveva.com/clients).
 1. `ClientSecret` should be the secret from the Client Credentials Client that was specified
 1. `DataView` is the path to the dataview json file.
 1. `Type` is the path to the type json file.
@@ -55,6 +58,6 @@ dotnet test
 
 ---
 
-For the main OCS bulk uploads samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS/blob/main/docs/BULK_UPLOAD.md)  
-For the main OCS samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS)  
-For the OSIsoft Samples landing page [ReadMe](https://github.com/osisoft/OSI-Samples)
+For the main ADH bulk uploads samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS/blob/main/docs/BULK_UPLOAD.md)  
+For the main ADH samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS)  
+For the AVEVA Samples landing page [ReadMe](https://github.com/osisoft/OSI-Samples)

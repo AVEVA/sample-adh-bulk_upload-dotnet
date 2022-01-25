@@ -5,7 +5,7 @@
 
 **Version:** 1.0.21
 
-[![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/OCS/aveva.sample-adh-bulk_upload-dotnet?branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2614&branchName=main)
+[![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/ADH/aveva.sample-adh-bulk_upload-dotnet?branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2614&branchName=main)
 
 Developed against DotNet 5.0.
 

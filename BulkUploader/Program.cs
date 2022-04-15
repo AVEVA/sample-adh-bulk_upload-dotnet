@@ -31,7 +31,7 @@ namespace BulkUploader
 
         public static void Main(params string[] args)
         {
-            var delete = args != null && args.Length > 0 && args[0].ToUpperInvariant() == "DELETE";
+            bool delete = args != null && args.Length > 0 && args[0].ToUpperInvariant() == "DELETE";
 
             if (delete)
                 Console.WriteLine("App is only deleting.");
@@ -48,11 +48,11 @@ namespace BulkUploader
                 .AddJsonFile("appsettings.test.json", optional: true)
                 .Build();
 
-            var tenantId = configuration["TenantId"];
-            var namespaceId = configuration["NamespaceId"];
-            var resource = configuration["Resource"];
-            var clientId = configuration["ClientId"];
-            var clientSecret = configuration["ClientSecret"];
+            string tenantId = configuration["TenantId"];
+            string namespaceId = configuration["NamespaceId"];
+            string resource = configuration["Resource"];
+            string clientId = configuration["ClientId"];
+            string clientSecret = configuration["ClientSecret"];
 
             DataViewPath = configuration["DataView"];
             SdsStreamPath = configuration["Stream"];
@@ -65,18 +65,18 @@ namespace BulkUploader
             SdsDataOnlyPath = configuration["DataOnly"];
 
             (configuration as ConfigurationRoot).Dispose();
-            var uriResource = new Uri(resource);
+            Uri uriResource = new (resource);
 
-            AuthenticationHandler authenticationHandler = new AuthenticationHandler(uriResource, clientId, clientSecret);
+            AuthenticationHandler authenticationHandler = new (uriResource, clientId, clientSecret);
 
-            SdsService sdsService = new SdsService(new Uri(resource), authenticationHandler);
+            SdsService sdsService = new (new Uri(resource), authenticationHandler);
             MetadataService = sdsService.GetMetadataService(tenantId, namespaceId);
             DataService = sdsService.GetDataService(tenantId, namespaceId);
 
             if (!string.IsNullOrEmpty(DataViewPath))
             {
-                AuthenticationHandler authenticationHandlerDataViews = new AuthenticationHandler(uriResource, clientId, clientSecret); // currently this has to be a different auth handler or it throws errors
-                var dv_service_factory = new DataViewServiceFactory(new Uri(resource), authenticationHandlerDataViews);
+                AuthenticationHandler authenticationHandlerDataViews = new (uriResource, clientId, clientSecret); // currently this has to be a different auth handler or it throws errors
+                DataViewServiceFactory dv_service_factory = new (new Uri(resource), authenticationHandlerDataViews);
                 DvService = dv_service_factory.GetDataViewService(tenantId, namespaceId);
             }
 
@@ -156,7 +156,7 @@ namespace BulkUploader
             Console.WriteLine($"Sending dataviews from file: {DataViewPath}");
             string dataviewS = File.ReadAllText(DataViewPath);
             List<DataView> dataviews = JsonConvert.DeserializeObject<List<DataView>>(dataviewS);
-            foreach (var dataview in dataviews)
+            foreach (DataView dataview in dataviews)
             {
                 DvService.CreateOrUpdateDataViewAsync(dataview).Wait();
             }
@@ -167,7 +167,7 @@ namespace BulkUploader
             Console.WriteLine($"Sending types from file: {SdsTypePath}");
             string types = File.ReadAllText(SdsTypePath);
             List<SdsType> typeList = JsonConvert.DeserializeObject<List<SdsType>>(types);
-            foreach (var type in typeList)
+            foreach (SdsType type in typeList)
             {
                 MetadataService.GetOrCreateTypeAsync(type).Wait();
             }
@@ -177,8 +177,8 @@ namespace BulkUploader
         {
             Console.WriteLine($"Sending streams from file: {SdsStreamPath}");
             string streams = File.ReadAllText(SdsStreamPath);
-            var streamsList = JsonConvert.DeserializeObject<List<SdsStream>>(streams); 
-            foreach (var stream in streamsList)
+            List<SdsStream> streamsList = JsonConvert.DeserializeObject<List<SdsStream>>(streams); 
+            foreach (SdsStream stream in streamsList)
             {
                 MetadataService.GetOrCreateStreamAsync(stream).Wait();
 
@@ -238,9 +238,9 @@ namespace BulkUploader
             {
                 Console.WriteLine($"Sending stream data from file: {file}");
                 string data = File.ReadAllText(file);
-                var matches = Regex.Matches(file, @"(?<=sdsdata)(.+?)(?=.json)");
-                var streamName = matches.First().Value;
-                var dataAsList = JsonConvert.DeserializeObject<List<JObject>>(data);
+                MatchCollection matches = Regex.Matches(file, @"(?<=sdsdata)(.+?)(?=.json)");
+                string streamName = matches.First().Value;
+                List<JObject> dataAsList = JsonConvert.DeserializeObject<List<JObject>>(data);
                 DataService.UpdateValuesAsync(streamName, dataAsList).Wait();
             }
         }
@@ -250,7 +250,7 @@ namespace BulkUploader
             Console.WriteLine($"Deleting Data Views");
             string dataviewS = File.ReadAllText(DataViewPath);
             List<DataView> dataviews = JsonConvert.DeserializeObject<List<DataView>>(dataviewS);
-            foreach (var dataview in dataviews)
+            foreach (DataView dataview in dataviews)
             {
                 try
                 { 
@@ -268,7 +268,7 @@ namespace BulkUploader
             Console.WriteLine($"Deleting Types");
             string types = File.ReadAllText(SdsTypePath);
             List<SdsType> typeList = JsonConvert.DeserializeObject<List<SdsType>>(types);
-            foreach (var type in typeList)
+            foreach (SdsType type in typeList)
             {
                 try
                 {
@@ -289,8 +289,8 @@ namespace BulkUploader
         {
             Console.WriteLine($"Deleting streams");
             string streams = File.ReadAllText(SdsStreamPath);
-            var streamsList = JsonConvert.DeserializeObject<List<SdsStream>>(streams);
-            foreach (var stream in streamsList)
+            List<SdsStream> streamsList = JsonConvert.DeserializeObject<List<SdsStream>>(streams);
+            foreach (SdsStream stream in streamsList)
             {
                 try
                 {

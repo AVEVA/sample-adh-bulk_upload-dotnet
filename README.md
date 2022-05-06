@@ -3,11 +3,11 @@
 | :loudspeaker: **Notice**: Samples have been updated to reflect that they work on AVEVA Data Hub. The samples also work on OSIsoft Cloud Services unless otherwise noted. |
 | -----------------------------------------------------------------------------------------------|  
 
-**Version:** 1.0.24
+**Version:** 1.1.0
 
 [![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/ADH/aveva.sample-adh-bulk_upload-dotnet?branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2614&branchName=main)
 
-Developed against DotNet 5.0.
+Developed against DotNet 6.0.
 
 ---
 

@@ -1,6 +1,6 @@
 # Version History
 
-## [' Wind Farm Data\n'] / 2022-09-17
+## 1.1.4 / 2022-09-17
 
 - Automate dependabot approval and automerge
 

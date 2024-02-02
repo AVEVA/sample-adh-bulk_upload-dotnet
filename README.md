@@ -1,6 +1,6 @@
 # Bulk Uploader SDS DotNet Sample
 
-**Version:** 1.1.4
+**Version:** 1.1.5
 
 [![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/ADH/aveva.sample-adh-bulk_upload-dotnet?branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2614&branchName=main)
 

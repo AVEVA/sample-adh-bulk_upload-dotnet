@@ -10,7 +10,7 @@ Developed against DotNet 6.0.
 
 ## About this sample
 
-This sample uses SDS OCSclients to send values, streams, types and dataviews. This simple sample sends SDS JSON messages that are saved pre-formed as files named sdsType.json, sdsStream.json, sdsdata{streamID}.json, dataview.json. It sends the files in that order. If there are metadata or tag files it will send that for the streams.
+This sample uses SDS Cdsclients to send values, streams, types and dataviews. This simple sample sends SDS JSON messages that are saved pre-formed as files named sdsType.json, sdsStream.json, sdsdata{streamID}.json, dataview.json. It sends the files in that order. If there are metadata or tag files it will send that for the streams.
 
 It does only basic error checking to make sure the message was accepted by the endpoint. The primary function of this sample is for easy bulk loading of data for other samples (particularly ML based samples where the amount of data is prohibitive to include in the sample itself). Included in the [SampleCollections](/SampleCollections) are the data sets including an editable `appsettings.json`.
 
@@ -24,9 +24,9 @@ This sample needs an OMF client credential created. For details on creating thos
 
 Configure the sample using the file [appsettings.placeholder.json](BulkUploader/appsettings.placeholder.json). Before editing, rename this file to `appsettings.json`. This repository's `.gitignore` rules should prevent the file from ever being checked in to any fork or branch, to ensure credentials are not compromised.
 
-1. `Resource` can usually be left as default, but should be the host specified at the beginning of the URL in the [ADH API Console](https://datahub.connect.aveva.com/apiconsole)
+1. `Resource` can usually be left as default, but should be the host specified at the beginning of the URL in the [Cds API Console](https://datahub.connect.aveva.com/apiconsole)
 1. `TenantId` should be the ID that comes after `/Tenants/` in the same URL
-1. `NamespaceId` should be the name of the ADH Namespace to send the data to
+1. `NamespaceId` should be the name of the Cds Namespace to send the data to
 1. `ClientId` should be the ID of a [Client Credentials Client](https://datahub.connect.aveva.com/clients).
 1. `ClientSecret` should be the secret from the Client Credentials Client that was specified
 1. `DataView` is the path to the dataview json file.
@@ -55,6 +55,6 @@ dotnet test
 
 ---
 
-For the main ADH bulk uploads samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS/blob/main/docs/BULK_UPLOAD.md)  
-For the main ADH samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS)  
-For the AVEVA Samples landing page [ReadMe](https://github.com/osisoft/OSI-Samples)
+For the main Cds bulk uploads samples page [ReadMe](https://github.com/AVEVA/AVEVA-Samples-CloudOperations/blob/main/docs/BULK_UPLOAD.md)  
+For the main Cds samples page [ReadMe](https://github.com/AVEVA/AVEVA-Samples-CloudOperations)  
+For the AVEVA Samples landing page [ReadMe](https://github.com/AVEVA/AVEVA-Samples)
